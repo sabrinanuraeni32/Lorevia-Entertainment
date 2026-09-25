@@ -1,0 +1,275 @@
+/* ==========================================================
+   Lorevia — Fansite Theme ("Jungle Pop")
+   Muat SETELAH assets/css/style.css supaya menimpa tema lama.
+   Palet: #24240C Deep Jungle · #4C4A17 Forest Olive · #86910E Olive Green
+          #DC840C Orange · #DCCE50 Golden Yellow · #D3AFA4 Dusty Pink
+   ========================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap');
+
+:root {
+    --pal-jungle: #24240C;
+    --pal-olive-dark: #4C4A17;
+    --pal-olive: #86910E;
+    --pal-orange: #DC840C;
+    --pal-gold: #DCCE50;
+    --pal-pink: #D3AFA4;
+    --font-fan: 'Baloo 2', 'Nunito', system-ui, sans-serif;
+}
+
+/* ---------- Warna (dipakai Tailwind lewat rgb(var(--x) / alpha)) ---------- */
+:root[data-theme="dark"] {
+    --forest-900: 36 36 12;      /* #24240C */
+    --forest-800: 54 53 17;
+    --forest-700: 76 74 23;      /* #4C4A17 */
+    --forest-600: 105 110 18;
+    --forest-500: 134 145 14;    /* #86910E */
+    --gold-400: 220 206 80;      /* #DCCE50 */
+    --gold-500: 220 169 46;
+    --gold-600: 220 132 12;      /* #DC840C */
+    --gold-700: 176 104 10;
+}
+:root[data-theme="light"] {
+    --forest-900: 255 248 238;
+    --forest-800: 250 236 226;
+    --forest-700: 240 216 207;
+    --forest-600: 211 175 164;   /* #D3AFA4 */
+    --forest-500: 134 145 14;
+    --gold-400: 168 92 6;
+    --gold-500: 200 118 8;
+    --gold-600: 220 132 12;
+    --gold-700: 176 100 8;
+}
+
+/* ---------- Font ---------- */
+h1, h2, h3, h4, .font-serif { font-family: var(--font-fan) !important; letter-spacing: .01em; }
+
+/* ---------- Background ---------- */
+:root[data-theme="dark"] body {
+    color: #FBF4E4;
+    background-color: #24240C;
+    background-image:
+        radial-gradient(circle at 10% 6%, rgba(220,132,12,.22), transparent 42%),
+        radial-gradient(circle at 92% 24%, rgba(211,175,164,.14), transparent 40%),
+        radial-gradient(circle at 50% 104%, rgba(134,145,14,.28), transparent 52%);
+    background-attachment: fixed;
+}
+:root[data-theme="light"] body {
+    color: #24240C;
+    background-color: #FFF8EE;
+    background-image:
+        radial-gradient(circle at 10% 6%, rgba(220,206,80,.30), transparent 42%),
+        radial-gradient(circle at 92% 24%, rgba(211,175,164,.35), transparent 40%),
+        radial-gradient(circle at 50% 104%, rgba(220,132,12,.14), transparent 52%);
+    background-attachment: fixed;
+}
+:root[data-theme="light"] .text-gray-100,
+:root[data-theme="light"] .text-gray-200 { color: #24240C; }
+:root[data-theme="light"] .text-gray-300,
+:root[data-theme="light"] .text-gray-400 { color: #4C4A17; }
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] select { color: #24240C; }
+
+/* Titik-titik confetti halus di seluruh halaman */
+.sun-ray {
+    pointer-events: none;
+    opacity: .12;
+    background-image:
+        radial-gradient(circle, #DCCE50 1.6px, transparent 2.2px),
+        radial-gradient(circle, #D3AFA4 1.6px, transparent 2.2px),
+        radial-gradient(circle, #DC840C 1.6px, transparent 2.2px);
+    background-size: 90px 90px, 130px 130px, 170px 170px;
+    background-position: 0 0, 40px 60px, 80px 20px;
+}
+
+/* ---------- Gradient text & border ---------- */
+.gold-text {
+    background: linear-gradient(90deg, #DCCE50 0%, #DC840C 60%, #D3AFA4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+:root[data-theme="light"] .gold-text {
+    background: linear-gradient(90deg, #B86A06 0%, #DC840C 55%, #A9736A 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.gold-border { border: 2px solid #DC840C; }
+
+/* ---------- Header ---------- */
+header.sticky {
+    border-bottom-left-radius: 28px;
+    border-bottom-right-radius: 28px;
+}
+
+/* ---------- Nav pill (sidebar) ---------- */
+#sidebar .nav-pill {
+    display: flex;
+    align-items: center;
+    gap: .65rem;
+    width: 100%;
+    text-align: left;
+    padding: .62rem 1.1rem;
+    border-radius: 9999px;
+    font-family: var(--font-fan);
+    font-weight: 700;
+    font-size: 1.02rem;
+    line-height: 1.2;
+    background: rgb(var(--forest-800) / .65);
+    border: 2px solid rgb(var(--forest-600) / .55);
+    transition: transform .15s ease, background .15s ease, border-color .15s ease;
+}
+#sidebar .nav-pill .nav-emoji { font-size: 1.15rem; width: 1.6rem; text-align: center; flex-shrink: 0; }
+#sidebar .nav-pill:hover {
+    background: rgb(var(--forest-700));
+    border-color: #DCCE50;
+    transform: translateX(-4px);
+}
+#sidebar .nav-pill.is-active {
+    background: linear-gradient(135deg, #DC840C 0%, #DCCE50 100%);
+    color: #24240C;
+    border-color: rgba(255,255,255,.5);
+    box-shadow: 0 4px 0 #9A5A05;
+}
+
+/* ---------- Candy button ---------- */
+.candy-btn,
+button.bg-gold-600,
+a.bg-gold-600 {
+    border-radius: 9999px;
+    background-color: #DC840C;
+    background-image: linear-gradient(180deg, #DCCE50 0%, #DC840C 100%);
+    color: #24240C;
+    font-family: var(--font-fan);
+    font-weight: 800;
+    border: 2px solid rgba(255,255,255,.4);
+    box-shadow: 0 5px 0 #9A5A05, 0 10px 18px rgba(0,0,0,.22);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.candy-btn:hover,
+button.bg-gold-600:hover,
+a.bg-gold-600:hover { filter: brightness(1.07); transform: translateY(-2px); }
+.candy-btn:active,
+button.bg-gold-600:active,
+a.bg-gold-600:active { transform: translateY(3px); box-shadow: 0 2px 0 #9A5A05; }
+
+/* Tombol sekunder (Batal, dll) — Dusty Pink */
+.candy-btn-soft {
+    border-radius: 9999px;
+    background-color: #D3AFA4;
+    background-image: linear-gradient(180deg, #F0DCD3 0%, #D3AFA4 100%);
+    color: #24240C;
+    font-family: var(--font-fan);
+    font-weight: 800;
+    border: 2px solid rgba(255,255,255,.4);
+    box-shadow: 0 5px 0 #A67F73, 0 10px 18px rgba(0,0,0,.18);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+.candy-btn-soft:hover { filter: brightness(1.05); transform: translateY(-2px); }
+.candy-btn-soft:active { transform: translateY(3px); box-shadow: 0 2px 0 #A67F73; }
+
+/* ---------- Focus ring input ---------- */
+input:focus, textarea:focus, select:focus { box-shadow: 0 0 0 4px rgba(220,132,12,.28); }
+
+/* ---------- Sticker emoji melayang ---------- */
+.sticker-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.sticker {
+    position: absolute;
+    font-size: var(--size, 2rem);
+    opacity: .38;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,.25));
+    animation: sticker-float var(--dur, 9s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+}
+@keyframes sticker-float {
+    0%, 100% { transform: translateY(0) rotate(var(--rot, -8deg)); }
+    50%      { transform: translateY(-20px) rotate(calc(var(--rot, -8deg) * -1)); }
+}
+
+/* ==========================================================
+   Komponen fansite — siap dipakai di halaman (JS/HTML)
+   ========================================================== */
+
+/* Badge kecil: HOT / NEW / INFO / FUN */
+.badge {
+    display: inline-flex; align-items: center; gap: .25rem;
+    font-family: var(--font-fan); font-weight: 800; font-size: .68rem;
+    letter-spacing: .06em; text-transform: uppercase; line-height: 1.5;
+    padding: .05rem .65rem;
+    border-radius: 9999px;
+    color: #24240C;
+    border: 2px solid #24240C;
+    box-shadow: 0 2px 0 rgba(36,36,12,.6);
+}
+.badge-hot  { background: #DC840C; }
+.badge-new  { background: #DCCE50; }
+.badge-info { background: #D3AFA4; }
+.badge-fun  { background: #86910E; }
+.badge-corner { position: absolute; top: -.55rem; right: .9rem; transform: rotate(4deg); z-index: 2; }
+
+/* Card fansite */
+.fan-card {
+    position: relative;
+    border-radius: 1.5rem;
+    border: 2px solid rgb(var(--forest-600));
+    box-shadow: 0 5px 0 rgb(var(--forest-600) / .7);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.fan-card:hover { transform: translateY(-4px) rotate(-.6deg); box-shadow: 0 9px 0 rgb(var(--forest-600) / .7); }
+
+/* Photocard miring + badge BIAS ALERT */
+.photocard {
+    position: relative;
+    background: linear-gradient(160deg, #FFF8EE, #F3DED4);
+    color: #24240C;
+    padding: .75rem .75rem 3rem;
+    border-radius: 1.25rem;
+    border: 3px solid #DC840C;
+    box-shadow: 6px 8px 0 #4C4A17, 0 18px 30px rgba(0,0,0,.35);
+    transform: rotate(-4deg);
+    transition: transform .25s ease;
+}
+.photocard:hover { transform: rotate(0deg) scale(1.03); }
+.photocard img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: .8rem; }
+.photocard .photocard-name {
+    position: absolute; left: 0; right: 0; bottom: .6rem;
+    text-align: center; font-family: var(--font-fan); font-weight: 800; font-size: 1.1rem;
+}
+.bias-alert {
+    position: absolute; top: -.9rem; left: -.9rem; z-index: 2;
+    transform: rotate(-8deg);
+    font-family: var(--font-fan); font-weight: 800; font-size: .8rem; letter-spacing: .04em;
+    padding: .3rem .85rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #DC840C, #DCCE50);
+    color: #24240C;
+    border: 2px solid #24240C;
+    box-shadow: 0 3px 0 #24240C;
+    animation: bias-wiggle 2.4s ease-in-out infinite;
+}
+@keyframes bias-wiggle {
+    0%, 100% { transform: rotate(-8deg) scale(1); }
+    50%      { transform: rotate(-4deg) scale(1.06); }
+}
+
+/* Section pengumuman ala event: confetti dots */
+.confetti-bg { position: relative; overflow: hidden; }
+.confetti-bg::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none; opacity: .3;
+    background-image:
+        radial-gradient(#DCCE50 2.5px, transparent 3px),
+        radial-gradient(#D3AFA4 2.5px, transparent 3px),
+        radial-gradient(#DC840C 2.5px, transparent 3px),
+        radial-gradient(#86910E 2.5px, transparent 3px);
+    background-size: 46px 46px, 62px 62px, 80px 80px, 38px 38px;
+    background-position: 0 0, 20px 30px, 40px 10px, 10px 50px;
+}
+.confetti-bg > * { position: relative; }
+
+/* Hormati pengguna yang mematikan animasi */
+@media (prefers-reduced-motion: reduce) {
+    .sticker, .bias-alert { animation: none; }
+    .candy-btn, .fan-card, .photocard, #sidebar .nav-pill { transition: none; }
+}
